@@ -8,8 +8,8 @@ from menu import *
 menu = True
 
 #Creando instancias de los personajes
-monster_1 = Monster(200, 370, 20, True, DOSBRAZOS_DATA, dosBrazos_sheet, DOSBRAZOS_ANIMATION_STEPS)
-monster_2=Monster(700, 370, 10, False, MDB_DATA, mdb_sheet, MDB_ANIMATION_STEPS)
+monster_1 = Monster(200, 370, False, 20, True, DOSBRAZOS_DATA, dosBrazos_sheet, DOSBRAZOS_ANIMATION_STEPS)
+monster_2 = Monster(700, 370, True,  10, False, MDB_DATA, mdb_sheet, MDB_ANIMATION_STEPS)
 
 #loop del juego principal
 run = True
@@ -21,6 +21,11 @@ while run:
         #Mostrar vida
         draw_health_bar(monster_1.salud, 20, 20)
         draw_health_bar(monster_2.salud, 630, 20)
+
+        #update
+        monster_1.update()
+        monster_2.update()
+
         #Dibujar monstruos
         monster_1.draw(screen)
         monster_2.draw(screen)

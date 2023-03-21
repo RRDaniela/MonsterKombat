@@ -22,12 +22,16 @@ hb = pygame.image.load('Assets/empty health bar.png').convert_alpha()
 
 DOSBRAZOS_WIDTH = 190
 DOSBRAZOS_HEIGHT = 185
-DOSBRAZOS_DATA = [DOSBRAZOS_HEIGHT, DOSBRAZOS_WIDTH]
+DOSBRAZOS_SCALE = 3
+DOSBRAZOS_OFFSET = [82, 66]
+DOSBRAZOS_DATA = [DOSBRAZOS_HEIGHT, DOSBRAZOS_WIDTH, DOSBRAZOS_SCALE, DOSBRAZOS_OFFSET]
+MDB_SCALE = 3
 MDB_WIDTH = 190
 MDB_HEIGHT = 155
-MDB_DATA = [MDB_HEIGHT, MDB_WIDTH]
+MDB_OFFSET = [83,46]
+MDB_DATA = [MDB_HEIGHT, MDB_WIDTH, MDB_SCALE, MDB_OFFSET]
 dosBrazos_sheet = pygame.image.load('Spritesheets/2Brazos/DosBrazos.png').convert_alpha()
-mdb_sheet = pygame.image.load('Spritesheets/MariposaDeBarrio/Walk.png').convert_alpha()
+mdb_sheet = pygame.image.load('Spritesheets/MariposaDeBarrio/MDB.png').convert_alpha()
 
 #Botones
 button_sheet = pygame.image.load('Assets/buttons.png')
