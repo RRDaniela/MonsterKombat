@@ -3,6 +3,7 @@ from colors import *
 import pygame
 
 def draw_health_bar(health, x, y):
+    '''Función para dibujar el rectángulo rojo que indica la salud de los personajes'''
     ratio = health / 100
     tiempo = 1700
     scaled_hb = pygame.transform.scale(hb, (440, 50))
