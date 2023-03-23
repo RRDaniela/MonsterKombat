@@ -3,9 +3,10 @@
 This is a fighting game that resembles a Mortal Kombat created in Python using Pygame.
 
 <div align="center">
+
 ## Main Menu
 
-<img src="https://scontent.fgdl1-4.fna.fbcdn.net/v/t1.15752-9/336652244_944755556940813_7252263039941228241_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeFjTlBJghre_mmuewHlaQHIqLr7gq9QBKiouvuCr1AEqIJYuvbwJBDJqLGJNnQkIXz74jx73o0d0oUHu4JNuEV2&_nc_ohc=kv0QGAK8waoAX9mkncH&_nc_ht=scontent.fgdl1-4.fna&oh=03_AdTCB8PHqT72SCC_Ak55pBpUSGabhxQ4OEpd9UskvBfXvg&oe=64434FA8" width=600 height=300>
+<img src="https://scontent.fgdl1-4.fna.fbcdn.net/v/t1.15752-9/336652244_944755556940813_7252263039941228241_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeFjTlBJghre_mmuewHlaQHIqLr7gq9QBKiouvuCr1AEqIJYuvbwJBDJqLGJNnQkIXz74jx73o0d0oUHu4JNuEV2&_nc_ohc=kv0QGAK8waoAX9mkncH&_nc_ht=scontent.fgdl1-4.fna&oh=03_AdTCB8PHqT72SCC_Ak55pBpUSGabhxQ4OEpd9UskvBfXvg&oe=64434FA8" width=600 height=400>
 
 ## Fight
 
