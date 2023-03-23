@@ -9,7 +9,7 @@ ALTO = 670
 
 #Fuente
 font_path = 'Fonts/deutsch_gothic/Deutsch.ttf'
-font = pygame.font.Font(font_path, 50)
+font_deutsch = pygame.font.Font(font_path, 50)
 #Variables del juego
 SALTO = 45
 
@@ -18,6 +18,12 @@ pygame.display.set_caption("Monster Kombat")
 
 #Healthbar
 hb = pygame.image.load('Assets/empty health bar.png').convert_alpha()
+
+#Sonidos
+sound=pygame.mixer.Sound('Assets/Music/641216__spiderfair__highlightlong.wav')
+hit= pygame.mixer.Sound('Assets/Music/425348__soundholder__8bit_hit_11.wav')
+gameover = pygame.mixer.Sound('Assets/Music/527650__fupicat__winsquare.wav')
+
 
 
 DOSBRAZOS_WIDTH = 190

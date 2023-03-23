@@ -126,6 +126,7 @@ class Monster():
             self.cambio_accion(3) #3: hit
         elif self.atacando == True:
             if self.tipo_ataque == 2:
+                hit.play()
                 self.cambio_accion(1) #1: Ataque pesado
         elif self.corriendo == True:
             self.cambio_accion(0) #0:caminar
