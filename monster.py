@@ -3,7 +3,7 @@ from settings import *
 from colors import *
 
 class Monster():
-    '''Clase de los personajes del juego'''
+    '''Clase de los monstruos del juego'''
     def __init__(self, x, y, flip, velocidad, player_2, data, sprite_sheet, animation_steps):
         self.height = data[0]
         self.width = data[1]
