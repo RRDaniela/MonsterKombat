@@ -43,12 +43,13 @@ mdb_sheet = pygame.image.load('Spritesheets/MariposaDeBarrio/MDB.png').convert_a
 button_sheet = pygame.image.load('Assets/buttons.png')
 
 #definir pasos de cada animación   AS = Animation steps
-#[walk, heavy attack, idle, hurt, Death]
-DOSBRAZOS_ANIMATION_STEPS = [8, 12, 8, 4, 8]
-MDB_ANIMATION_STEPS = [8, 8, 8, 4, 8]
+#[walk, heavy attack, idle, hurt, Death, quick attack, light attack]
+DOSBRAZOS_ANIMATION_STEPS = [8, 12, 8, 4, 8, 4, 8]
+MDB_ANIMATION_STEPS = [8, 8, 8, 4, 8, 5, 7]
 #TODO: Cambiar background
 fondo = pygame.image.load('Assets/bulkhead-wallsx3.png').convert_alpha()
 
-#Función para añadir el fondo
+
 def draw_bg():
+    '''Función que dibuja el fondo del juego'''
     screen.blit(fondo, (0,0))

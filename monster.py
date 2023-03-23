@@ -3,6 +3,7 @@ from settings import *
 from colors import *
 
 class Monster():
+    '''Clase de los personajes del juego'''
     def __init__(self, x, y, flip, velocidad, player_2, data, sprite_sheet, animation_steps):
         self.height = data[0]
         self.width = data[1]
@@ -29,6 +30,7 @@ class Monster():
         self.vivo = True
 
     def cargar_imagenes(self, sprite_sheet, animation_steps):
+        '''Función que carga las animaciones para cada acción desde el spritesheet de cada personaje'''
         animation_list = []
         for y, animation in enumerate(animation_steps):
             temp_img_list = []
@@ -39,7 +41,7 @@ class Monster():
         return animation_list
 
     def caminar(self, surface, target):
-        ''''Funcion para hacer que el monstruo camine'''
+        ''''Funcion que controla todo el movimiento del personaje'''
         gravedad = 2
         dx = 0
         dy = 0
@@ -64,13 +66,16 @@ class Monster():
                         self.velY = -SALTO+self.velocidad
                         self.salto = True
                     if key[pygame.K_q] or key[pygame.K_e] or key[pygame.K_r]:
-                        self.atacar(surface, target)
+                        
                         if key[pygame.K_q]:
                             self.tipo_ataque = 1
+                            self.atacar(surface, target)
                         if key[pygame.K_e]:
                             self.tipo_ataque = 2
+                            self.atacar(surface, target)
                         if key[pygame.K_r]:
                             self.tipo_ataque = 3
+                            self.atacar(surface, target)
                 else:
                     if key[pygame.K_LEFT]:
                         dx = -(self.velocidad)
@@ -85,10 +90,13 @@ class Monster():
                         self.atacar(surface, target)
                         if key[pygame.K_KP_1]:
                             self.tipo_ataque = 1
+                            self.atacar(surface, target)
                         if key[pygame.K_KP_2]:
                             self.tipo_ataque = 2
+                            self.atacar(surface, target)
                         if key[pygame.K_KP_3]:
                             self.tipo_ataque = 3
+                            self.atacar(surface, target)
                 #efecto de gravedad
                 self.velY += gravedad
                 dy += self.velY
@@ -117,6 +125,7 @@ class Monster():
                 self.rect.y += dy
     
     def update(self):
+        '''Función que se encarga de actualizar la animación del personaje dependiendo de la acción que esté realizando'''
         #Verificar acciones en uso
         if self.salud <= 0:
             self.salud = 0
@@ -125,9 +134,15 @@ class Monster():
         elif self.take_hit == True:
             self.cambio_accion(3) #3: hit
         elif self.atacando == True:
-            if self.tipo_ataque == 2:
+            if self.tipo_ataque == 1:
+                hit.play()
+                self.cambio_accion(5) #5 ataque rapido
+            elif self.tipo_ataque == 2:
                 hit.play()
                 self.cambio_accion(1) #1: Ataque pesado
+            elif self.tipo_ataque == 3:
+                hit.play()
+                self.cambio_accion(6) #6: ataque ligero
         elif self.corriendo == True:
             self.cambio_accion(0) #0:caminar
         else:
@@ -149,23 +164,37 @@ class Monster():
                 if self.accion == 1:
                     self.atacando = False
                     self.cooldown_ataque = 50
-                if self.accion == 3:
+                if self.accion == 3 or self.accion == 5 or self.accion == 6:
                     self.take_hit = False
                     self.atacando = False
-                    self.cooldown_ataque = 50
+                    if self.accion == 5:
+                        self.cooldown_ataque = 10
+                    elif self.accion == 6:
+                        self.cooldown_ataque = 20
+                    elif self.accion == 3:
+                        self.cooldown_ataque = 50
+                    
 
     def atacar(self, surface, target):
+        '''Función que crea el rectángulo de colisión del ataque del personaje y hace el cálculo de daño'''
         if self.cooldown_ataque == 0:
             self.atacando = True
             rect_arma = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2* self.rect.width, self.rect.height)
             if rect_arma.colliderect(target.rect):
-                target.salud -= 10
-                target.take_hit = True
+                if self.tipo_ataque == 1:
+                    target.salud -= 5
+                    target.take_hit = True
+                elif self.tipo_ataque == 2:
+                    target.salud -= 13
+                    target.take_hit = True
+                elif self.tipo_ataque == 3:
+                    target.salud -= 8
+                    target.take_hit = True
             pygame.draw.rect(surface, VERDE, rect_arma)
     
 
     def cambio_accion(self, nueva_accion):
-        #Verifica si la nueva acción es diferente a la anterior
+        '''Función que verifica si la nueva acción introducida es diferente a la anterior'''
         if nueva_accion != self.accion:
             self.accion = nueva_accion
             #Actualizar settings de la animación
