@@ -190,7 +190,7 @@ class Monster():
                 elif self.tipo_ataque == 3:
                     target.salud -= 5
                     target.take_hit = True
-            pygame.draw.rect(surface, VERDE, rect_arma)
+            #pygame.draw.rect(surface, VERDE, rect_arma)
     
 
     def cambio_accion(self, nueva_accion):
@@ -204,6 +204,6 @@ class Monster():
     def draw(self, surface):
         ''''Funcion para dibujar a los monstruos en la pantalla'''
         img = pygame.transform.flip(self.image, self.flip, False)
-        pygame.draw.rect(surface, ROJO, self.rect)
+        #pygame.draw.rect(surface, ROJO, self.rect)
         surface.blit(img, (self.rect.x -(self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
     
