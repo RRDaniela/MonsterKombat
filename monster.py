@@ -11,7 +11,7 @@ class Monster():
         self.offset = data[3]
         self.flip = flip
         self.animation_list = self.cargar_imagenes(sprite_sheet, animation_steps) 
-        self.rect = pygame.Rect((x, y, 80, 180))
+        self.rect = pygame.Rect((x, y, 100, 180))
         self.velocidad=velocidad
         self.velY = 0
         self.player_2:bool = player_2 
@@ -179,16 +179,16 @@ class Monster():
         '''Función que crea el rectángulo de colisión del ataque del personaje y hace el cálculo de daño'''
         if self.cooldown_ataque == 0:
             self.atacando = True
-            rect_arma = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2* self.rect.width, self.rect.height)
+            rect_arma = pygame.Rect(self.rect.centerx - (3 * self.rect.width * self.flip), self.rect.y, 3* self.rect.width, self.rect.height)
             if rect_arma.colliderect(target.rect):
                 if self.tipo_ataque == 1:
                     target.salud -= 5
                     target.take_hit = True
                 elif self.tipo_ataque == 2:
-                    target.salud -= 13
+                    target.salud -= 10
                     target.take_hit = True
                 elif self.tipo_ataque == 3:
-                    target.salud -= 8
+                    target.salud -= 5
                     target.take_hit = True
             pygame.draw.rect(surface, VERDE, rect_arma)
     

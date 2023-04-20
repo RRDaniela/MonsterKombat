@@ -4,6 +4,7 @@ from monster import Monster
 from settings import  *
 from menu import *
 from boton import *
+from monster_factory import *
 
 #Si alguno de los 2 personajes murieron
 font_size = 30
@@ -18,8 +19,14 @@ menu = True
 flag = True
 
 #Creando instancias de los personajes
-monster_1 = Monster(200, 370, False, 20, True, DOSBRAZOS_DATA, dosBrazos_sheet, DOSBRAZOS_ANIMATION_STEPS)
-monster_2 = Monster(700, 370, True,  10, False, MDB_DATA, mdb_sheet, MDB_ANIMATION_STEPS)
+#monster_1 = Monster(200, 370, False, 10, True, DOSBRAZOS_DATA, dosBrazos_sheet, DOSBRAZOS_ANIMATION_STEPS)
+#monster_2 = Monster(700, 370, True,  20, False, MDB_DATA, mdb_sheet, MDB_ANIMATION_STEPS)
+fabrica_pesado = MonsterFactoryHeavy()
+fabrica_rapido = MonsterFactoryAgile()
+
+monster_1 = fabrica_pesado.crear_monstruo()
+monster_2 = fabrica_rapido.crear_monstruo()
+
 
 #Botones del menú
 button = Boton('PLAY', ANCHO//2, ALTO//2-100)
@@ -31,7 +38,7 @@ while run:
     #Poner el fondo
     draw_bg()
     if(menu!=True):
-        if(monster_1.salud>0 and monster_2.salud>0):
+        if(monster_1.salud>=0 and monster_2.salud>=0):
             #Mostrar vida
             draw_health_bar(monster_1.salud, 20, 20)
             draw_health_bar(monster_2.salud, 630, 20)
