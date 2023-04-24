@@ -49,6 +49,7 @@ class Monster():
         self.tipo_ataque = 0
 
         #Dependiendo de las teclas.. moverse
+        #TODO: Separar funciones de salto, caminar, golpear, recibir golpe
         key = pygame.key.get_pressed()
         if self.vivo == False:
             pygame.QUIT
@@ -180,6 +181,7 @@ class Monster():
         if self.cooldown_ataque == 0:
             self.atacando = True
             rect_arma = pygame.Rect(self.rect.centerx - (3 * self.rect.width * self.flip), self.rect.y, 3* self.rect.width, self.rect.height)
+            #TODO: Funcion recibir golpe
             if rect_arma.colliderect(target.rect):
                 if self.tipo_ataque == 1:
                     target.salud -= 5

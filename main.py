@@ -5,6 +5,7 @@ from settings import  *
 from menu import *
 from boton import *
 from monster_factory import *
+from monsterblock import * 
 
 #Si alguno de los 2 personajes murieron
 font_size = 30
@@ -27,6 +28,9 @@ fabrica_rapido = MonsterFactoryAgile()
 monster_1 = fabrica_pesado.crear_monstruo()
 monster_2 = fabrica_rapido.crear_monstruo()
 
+#Decorar al personaje con la funcionalidad de bloqueo
+monster_1_block = MonsterBlock(monster_1)
+monster_2_block = MonsterBlock(monster_2)
 
 #Botones del menú
 button = Boton('PLAY', ANCHO//2, ALTO//2-100)
@@ -38,22 +42,22 @@ while run:
     #Poner el fondo
     draw_bg()
     if(menu!=True):
-        if(monster_1.salud>=0 and monster_2.salud>=0):
+        if(monster_1_block.monster.salud>=0 and monster_2_block.monster.salud>=0):
             #Mostrar vida
-            draw_health_bar(monster_1.salud, 20, 20)
-            draw_health_bar(monster_2.salud, 630, 20)
+            draw_health_bar(monster_1_block.monster.salud, 20, 20)
+            draw_health_bar(monster_2_block.monster.salud, 630, 20)
 
             #update
-            monster_1.update()
-            monster_2.update()
+            monster_1_block.update()
+            monster_2_block.update()
 
             #Dibujar monstruos
-            monster_1.draw(screen)
-            monster_2.draw(screen)
+            monster_1_block.draw(screen)
+            monster_2_block.draw(screen)
 
             #mover jugadores
-            monster_1.caminar(screen, monster_2)
-            monster_2.caminar(screen, monster_1)
+            monster_1_block.caminar(screen, monster_2_block.monster)
+            monster_2_block.caminar(screen, monster_1_block.monster)
         else:
             if(text_y!=115.0):
                 text_y += text_velocity
