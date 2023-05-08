@@ -50,6 +50,6 @@ MDB_ANIMATION_STEPS = [8, 8, 8, 4, 8, 5, 7]
 fondo = pygame.image.load('Assets/bulkhead-wallsx3.png').convert_alpha()
 
 
-def draw_bg():
+def draw_bg() -> None:
     '''Función que dibuja el fondo del juego'''
     screen.blit(fondo, (0,0))

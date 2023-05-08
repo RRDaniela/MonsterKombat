@@ -1,10 +1,7 @@
 from settings import *
 from colors import *
 
-text_start = font_deutsch.render('START', True, DORADO)
-text_quit = font_deutsch.render('QUIT', True, DORADO)
-
-def get_image(sheet, ancho, alto, incrementar, color, frame):
+def get_image(sheet, ancho, alto, incrementar, color, frame) -> object:
     '''Función que pone en los botones o rects el fondo de una imagen'''
     image = pygame.Surface((ancho, alto)).convert_alpha()
     image.blit(sheet, (0,0), (frame*ancho,frame*alto, ancho, alto))

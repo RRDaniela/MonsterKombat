@@ -51,9 +51,12 @@ while run:
             monster_1.draw(screen)
             monster_2.draw(screen)
 
+
             #mover jugadores
-            monster_1.caminar(screen, monster_2)
-            monster_2.caminar(screen, monster_1)
+            monster_1.caminarChain(screen, monster_2)
+            monster_2.caminarChain(screen, monster_1)
+
+
         else:
             if(text_y!=115.0):
                 text_y += text_velocity

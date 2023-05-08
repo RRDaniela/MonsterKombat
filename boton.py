@@ -19,7 +19,7 @@ class Boton:
         self.mouse_over = False
         self.redraw()
 
-    def redraw(self):
+    def redraw(self) -> None:
         '''Método para actualizar la imagen del botón'''
         self.image.fill((0, 0, 0, 0)) # Poner el fondo transparente
         button_frame = get_image(button_sheet, 70, 42, 1, NEGRO, 0)  # Obtener el frame de los botones
@@ -32,7 +32,7 @@ class Boton:
         text_rect.center = self.image.get_rect().center
         self.image.blit(text_surf, text_rect)
 
-    def draw(self, screen):
+    def draw(self, screen) -> None:
         '''Método para renderear el botón en la pantalla.'''
         screen.blit(self.image, self.rect)
         if self.mouse_over:

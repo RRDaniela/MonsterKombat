@@ -2,7 +2,7 @@ from settings import *
 from colors import *
 import pygame
 
-def draw_health_bar(health, x, y):
+def draw_health_bar(health, x, y) -> None:
     '''Función para dibujar el rectángulo rojo que indica la salud de los personajes'''
     ratio = health / 100
     tiempo = 1700
